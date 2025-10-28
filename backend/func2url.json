@@ -1,3 +1,5 @@
 {
+  "get-balance": "https://functions.poehali.dev/3b79a6e9-d6a0-4a34-9702-2ba8913a5324",
+  "activate-card": "https://functions.poehali.dev/6594e70a-dcf3-43db-ab95-f82fec90fd7c",
   "telegram-bot": "https://functions.poehali.dev/2c67697b-f8f3-4490-93cc-213b1635bac7"
 }

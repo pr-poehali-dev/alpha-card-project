@@ -44,12 +44,15 @@ export default function Index() {
   
   useEffect(() => {
     const tg = window.Telegram?.WebApp;
+    let telegramId: number | null = null;
+    
     if (tg) {
       tg.ready();
       tg.expand();
       
       const user = tg.initDataUnsafe.user;
       if (user) {
+        telegramId = user.id;
         setUserName(user.first_name || 'Пользователь');
       }
     }
@@ -59,7 +62,18 @@ export default function Index() {
     if (pageParam && ['dashboard', 'card-order', 'withdraw', 'referral', 'info', 'support', 'admin'].includes(pageParam)) {
       setCurrentPage(pageParam);
     }
-  }, []);
+    
+    if (telegramId) {
+      fetch(`https://functions.poehali.dev/3b79a6e9-d6a0-4a34-9702-2ba8913a5324?telegram_id=${telegramId}&first_name=${encodeURIComponent(userName)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.balance !== undefined) {
+            setBalance(data.balance);
+          }
+        })
+        .catch(() => {});
+    }
+  }, [userName]);
 
   const handleAuth = (e: React.FormEvent) => {
     e.preventDefault();
@@ -619,6 +633,52 @@ export default function Index() {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+            
+            <Separator />
+            
+            <div className="space-y-4">
+              <h3 className="font-bold text-xl">Активация карты</h3>
+              <Card className="border-2 border-primary/20">
+                <CardContent className="p-6 space-y-4">
+                  <p className="text-muted-foreground">
+                    Для активации карты и начисления бонуса 500₽ введите Telegram ID пользователя
+                  </p>
+                  <form onSubmit={(e) => {
+                    e.preventDefault();
+                    const formData = new FormData(e.target as HTMLFormElement);
+                    const telegramId = formData.get('telegram_id') as string;
+                    
+                    fetch('https://functions.poehali.dev/6594e70a-dcf3-43db-ab95-f82fec90fd7c', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ telegram_id: parseInt(telegramId) })
+                    })
+                      .then(res => res.json())
+                      .then(data => {
+                        if (data.success) {
+                          toast.success(`Бонус ${data.bonus}₽ начислен! Новый баланс: ${data.balance}₽`);
+                          (e.target as HTMLFormElement).reset();
+                        } else {
+                          toast.error(data.error || 'Ошибка активации');
+                        }
+                      })
+                      .catch(() => toast.error('Ошибка подключения'));
+                  }} className="flex gap-3">
+                    <Input 
+                      name="telegram_id" 
+                      type="number" 
+                      placeholder="Telegram ID" 
+                      required 
+                      className="h-12"
+                    />
+                    <Button type="submit" className="h-12 bg-gradient-to-r from-primary to-secondary">
+                      <Icon name="CheckCircle" size={20} className="mr-2" />
+                      Активировать
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
             </div>
             
             <Separator />
