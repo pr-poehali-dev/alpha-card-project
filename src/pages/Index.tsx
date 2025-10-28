@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Icon from '@/components/ui/icon';
 import { toast } from 'sonner';
 
@@ -268,6 +269,31 @@ export default function Index() {
                   required
                   className="h-14 text-lg"
                 />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="bank" className="text-base">Выберите банк</Label>
+                <Select name="bank" required>
+                  <SelectTrigger className="h-14 text-lg">
+                    <SelectValue placeholder="Выберите банк для перевода" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="sber">🟢 Сбербанк</SelectItem>
+                    <SelectItem value="tinkoff">💛 Тинькофф</SelectItem>
+                    <SelectItem value="alfa">🔴 Альфа-Банк</SelectItem>
+                    <SelectItem value="vtb">🔵 ВТБ</SelectItem>
+                    <SelectItem value="raif">🟡 Райффайзен</SelectItem>
+                    <SelectItem value="otkrytie">🟠 Открытие</SelectItem>
+                    <SelectItem value="gazprom">⚫ Газпромбанк</SelectItem>
+                    <SelectItem value="psb">🟣 ПСБ</SelectItem>
+                    <SelectItem value="rosbank">🔴 Росбанк</SelectItem>
+                    <SelectItem value="sovkom">🟢 Совкомбанк</SelectItem>
+                    <SelectItem value="mts">🔴 МТС Банк</SelectItem>
+                    <SelectItem value="akbars">🟡 Ак Барс</SelectItem>
+                    <SelectItem value="unicredit">🔴 ЮниКредит</SelectItem>
+                    <SelectItem value="other">🏦 Другой банк</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               
               <div className="space-y-2">
