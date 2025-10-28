@@ -17,6 +17,7 @@ export default function Index() {
   const [balance, setBalance] = useState(0);
   const [userName, setUserName] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedBank, setSelectedBank] = useState('');
 
   const handleAuth = (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,9 +37,18 @@ export default function Index() {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const amount = formData.get('amount') as string;
+    const bank = formData.get('bank') as string;
+    const customBank = formData.get('customBank') as string;
     
     if (parseFloat(amount) > balance) {
       toast.error('Недостаточно средств на балансе');
+      return;
+    }
+    
+    if (bank === 'other' && customBank) {
+      toast.error(`Извините, выплаты на ${customBank} не осуществляются`, {
+        duration: 5000,
+      });
       return;
     }
     
@@ -273,7 +283,7 @@ export default function Index() {
               
               <div className="space-y-2">
                 <Label htmlFor="bank" className="text-base">Выберите банк</Label>
-                <Select name="bank" required>
+                <Select name="bank" required onValueChange={setSelectedBank}>
                   <SelectTrigger className="h-14 text-lg">
                     <SelectValue placeholder="Выберите банк для перевода" />
                   </SelectTrigger>
@@ -295,6 +305,23 @@ export default function Index() {
                   </SelectContent>
                 </Select>
               </div>
+              
+              {selectedBank === 'other' && (
+                <div className="space-y-2 animate-fade-in">
+                  <Label htmlFor="customBank" className="text-base">Название вашего банка</Label>
+                  <Input
+                    id="customBank"
+                    name="customBank"
+                    placeholder="Введите название банка"
+                    required
+                    className="h-14 text-lg"
+                  />
+                  <p className="text-sm text-muted-foreground flex items-center gap-2">
+                    <Icon name="AlertCircle" size={16} />
+                    Мы проверим возможность выплаты на этот банк
+                  </p>
+                </div>
+              )}
               
               <div className="space-y-2">
                 <Label htmlFor="phone" className="text-base">Номер телефона (СБП)</Label>
