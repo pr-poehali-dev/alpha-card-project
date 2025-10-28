@@ -1,0 +1,18 @@
+{
+  "name": "Альфа-Карта - Реферальная программа",
+  "short_name": "Альфа-Карта",
+  "description": "Оформляй карту Альфа-Банка и получай бонусы",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#9b87f5",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://cdn.poehali.dev/projects/d60a4cb5-e49b-4af8-9697-db62011f0720/files/471ba973-8653-4415-9b4d-7a4d725eb145.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

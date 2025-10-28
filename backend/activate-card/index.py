@@ -87,6 +87,49 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             cur.close()
             conn.close()
             
+            bot_token = os.environ.get('TELEGRAM_BOT_TOKEN', '')
+            if bot_token:
+                import urllib.request
+                
+                message_text = (
+                    "🎉 *Поздравляем!*\n\n"
+                    f"Ваша карта успешно активирована!\n"
+                    f"💰 Бонус *500₽* зачислен на ваш баланс!\n\n"
+                    f"Ваш новый баланс: *{float(new_balance)}₽*\n\n"
+                    "Теперь вы можете:\n"
+                    "• Вывести средства через СБП\n"
+                    "• Пригласить друзей и получить ещё больше!\n\n"
+                    "Откройте приложение, чтобы продолжить 👇"
+                )
+                
+                send_data = {
+                    'chat_id': telegram_id,
+                    'text': message_text,
+                    'parse_mode': 'Markdown',
+                    'reply_markup': {
+                        'inline_keyboard': [[
+                            {
+                                'text': '🚀 Открыть приложение',
+                                'web_app': {'url': 'https://alpha-card-project--preview.poehali.dev/'}
+                            }
+                        ]]
+                    }
+                }
+                
+                send_url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
+                req_data = json.dumps(send_data).encode('utf-8')
+                req = urllib.request.Request(
+                    send_url,
+                    data=req_data,
+                    headers={'Content-Type': 'application/json'}
+                )
+                
+                try:
+                    with urllib.request.urlopen(req) as response:
+                        response.read()
+                except Exception:
+                    pass
+            
             return {
                 'statusCode': 200,
                 'headers': {
