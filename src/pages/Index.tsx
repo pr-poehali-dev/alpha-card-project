@@ -35,10 +35,10 @@ import { toast } from 'sonner';
 type Page = 'auth' | 'dashboard' | 'card-order' | 'withdraw' | 'referral' | 'info' | 'support' | 'admin';
 
 export default function Index() {
-  const [currentPage, setCurrentPage] = useState<Page>('auth');
+  const [currentPage, setCurrentPage] = useState<Page>('dashboard');
   const [isLogin, setIsLogin] = useState(true);
   const [balance, setBalance] = useState(0);
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState('Гость');
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedBank, setSelectedBank] = useState('');
   
@@ -51,7 +51,6 @@ export default function Index() {
       const user = tg.initDataUnsafe.user;
       if (user) {
         setUserName(user.first_name || 'Пользователь');
-        setCurrentPage('dashboard');
       }
     }
   }, []);
@@ -632,7 +631,6 @@ export default function Index() {
   );
 
   const pages = {
-    auth: <AuthPage />,
     dashboard: <DashboardPage />,
     'card-order': <CardOrderPage />,
     withdraw: <WithdrawPage />,
@@ -642,5 +640,5 @@ export default function Index() {
     admin: <AdminPage />,
   };
 
-  return pages[currentPage];
+  return pages[currentPage] || <DashboardPage />;
 }
