@@ -164,8 +164,9 @@ export default function Index() {
   );
 
   const DashboardPage = () => (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/10">
-      <div className="container max-w-6xl mx-auto p-4 space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/10 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-30 bg-cover bg-center" style={{backgroundImage: 'url(https://cdn.poehali.dev/projects/d60a4cb5-e49b-4af8-9697-db62011f0720/files/0ab31fba-31d9-4ebc-9fb5-c142779d9457.jpg)'}}></div>
+      <div className="container max-w-6xl mx-auto p-4 space-y-6 relative z-10">
         <div className="flex justify-between items-center">
           <div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -250,7 +251,8 @@ export default function Index() {
   );
 
   const CardOrderPage = () => (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/10 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/10 p-4 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-30 bg-cover bg-center" style={{backgroundImage: 'url(https://cdn.poehali.dev/projects/d60a4cb5-e49b-4af8-9697-db62011f0720/files/0ab31fba-31d9-4ebc-9fb5-c142779d9457.jpg)'}}></div>
       <div className="container max-w-4xl mx-auto space-y-6">
         <Button variant="ghost" onClick={() => setCurrentPage('dashboard')} className="mb-4">
           <Icon name="ArrowLeft" size={20} className="mr-2" />
@@ -306,8 +308,9 @@ export default function Index() {
   );
 
   const WithdrawPage = () => (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/10 p-4">
-      <div className="container max-w-2xl mx-auto space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/10 p-4 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-30 bg-cover bg-center" style={{backgroundImage: 'url(https://cdn.poehali.dev/projects/d60a4cb5-e49b-4af8-9697-db62011f0720/files/0ab31fba-31d9-4ebc-9fb5-c142779d9457.jpg)'}}></div>
+      <div className="container max-w-2xl mx-auto space-y-6 relative z-10">
         <Button variant="ghost" onClick={() => setCurrentPage('dashboard')} className="mb-4">
           <Icon name="ArrowLeft" size={20} className="mr-2" />
           Назад
@@ -414,8 +417,9 @@ export default function Index() {
   );
 
   const ReferralPage = () => (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/10 p-4">
-      <div className="container max-w-4xl mx-auto space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/10 p-4 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-30 bg-cover bg-center" style={{backgroundImage: 'url(https://cdn.poehali.dev/projects/d60a4cb5-e49b-4af8-9697-db62011f0720/files/0ab31fba-31d9-4ebc-9fb5-c142779d9457.jpg)'}}></div>
+      <div className="container max-w-4xl mx-auto space-y-6 relative z-10">
         <Button variant="ghost" onClick={() => setCurrentPage('dashboard')} className="mb-4">
           <Icon name="ArrowLeft" size={20} className="mr-2" />
           Назад
@@ -488,8 +492,9 @@ export default function Index() {
   );
 
   const InfoPage = () => (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/10 p-4">
-      <div className="container max-w-4xl mx-auto space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-secondary/10 p-4 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-30 bg-cover bg-center" style={{backgroundImage: 'url(https://cdn.poehali.dev/projects/d60a4cb5-e49b-4af8-9697-db62011f0720/files/0ab31fba-31d9-4ebc-9fb5-c142779d9457.jpg)'}}></div>
+      <div className="container max-w-4xl mx-auto space-y-6 relative z-10">
         <Button variant="ghost" onClick={() => setCurrentPage('dashboard')} className="mb-4">
           <Icon name="ArrowLeft" size={20} className="mr-2" />
           Назад
@@ -539,8 +544,9 @@ export default function Index() {
   );
 
   const SupportPage = () => (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/10 p-4">
-      <div className="container max-w-2xl mx-auto space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/10 p-4 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-30 bg-cover bg-center" style={{backgroundImage: 'url(https://cdn.poehali.dev/projects/d60a4cb5-e49b-4af8-9697-db62011f0720/files/0ab31fba-31d9-4ebc-9fb5-c142779d9457.jpg)'}}></div>
+      <div className="container max-w-2xl mx-auto space-y-6 relative z-10">
         <Button variant="ghost" onClick={() => setCurrentPage('dashboard')} className="mb-4">
           <Icon name="ArrowLeft" size={20} className="mr-2" />
           Назад
@@ -597,8 +603,9 @@ export default function Index() {
   );
 
   const AdminPage = () => (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/10 p-4">
-      <div className="container max-w-6xl mx-auto space-y-6">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/10 p-4 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-30 bg-cover bg-center" style={{backgroundImage: 'url(https://cdn.poehali.dev/projects/d60a4cb5-e49b-4af8-9697-db62011f0720/files/0ab31fba-31d9-4ebc-9fb5-c142779d9457.jpg)'}}></div>
+      <div className="container max-w-6xl mx-auto space-y-6 relative z-10">
         <Button variant="ghost" onClick={() => setCurrentPage('dashboard')} className="mb-4">
           <Icon name="ArrowLeft" size={20} className="mr-2" />
           Назад
