@@ -1,4 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+declare global {
+  interface Window {
+    Telegram?: {
+      WebApp: {
+        initDataUnsafe: {
+          user?: {
+            id: number;
+            first_name: string;
+            last_name?: string;
+            username?: string;
+          };
+        };
+        ready: () => void;
+        expand: () => void;
+        MainButton: {
+          show: () => void;
+          hide: () => void;
+        };
+      };
+    };
+  }
+}
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -18,6 +41,20 @@ export default function Index() {
   const [userName, setUserName] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedBank, setSelectedBank] = useState('');
+  
+  useEffect(() => {
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+      
+      const user = tg.initDataUnsafe.user;
+      if (user) {
+        setUserName(user.first_name || 'Пользователь');
+        setCurrentPage('dashboard');
+      }
+    }
+  }, []);
 
   const handleAuth = (e: React.FormEvent) => {
     e.preventDefault();

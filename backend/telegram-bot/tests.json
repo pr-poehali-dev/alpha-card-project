@@ -1,0 +1,25 @@
+{
+  "tests": [
+    {
+      "name": "Handle OPTIONS request",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Handle webhook POST",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "message": {
+          "chat": {"id": 12345},
+          "text": "/start"
+        }
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "ok": true
+      }
+    }
+  ]
+}
