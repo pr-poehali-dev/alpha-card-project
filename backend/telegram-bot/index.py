@@ -53,26 +53,26 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                     [
                         {
                             'text': '💳 Оформить карту',
-                            'callback_data': 'order_card'
+                            'web_app': {'url': f'{web_app_url}?page=card-order'}
                         },
                         {
                             'text': '💰 Баланс',
-                            'callback_data': 'balance'
+                            'web_app': {'url': web_app_url}
                         }
                     ],
                     [
                         {
                             'text': '👥 Пригласить друга',
-                            'callback_data': 'referral'
+                            'web_app': {'url': f'{web_app_url}?page=referral'}
                         },
                         {
                             'text': '💸 Вывести деньги',
-                            'callback_data': 'withdraw'
+                            'web_app': {'url': f'{web_app_url}?page=withdraw'}
                         }
                     ],
                     [{
                         'text': '❓ Помощь',
-                        'callback_data': 'help'
+                        'web_app': {'url': f'{web_app_url}?page=support'}
                     }]
                 ]
             }

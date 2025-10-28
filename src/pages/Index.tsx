@@ -53,6 +53,12 @@ export default function Index() {
         setUserName(user.first_name || 'Пользователь');
       }
     }
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageParam = urlParams.get('page') as Page | null;
+    if (pageParam && ['dashboard', 'card-order', 'withdraw', 'referral', 'info', 'support', 'admin'].includes(pageParam)) {
+      setCurrentPage(pageParam);
+    }
   }, []);
 
   const handleAuth = (e: React.FormEvent) => {
